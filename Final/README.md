@@ -9,6 +9,6 @@
         |-- cos_dense_attention.py    # 见说明1
         |-- lgb_final.ipynb           # LightGBM模型
         |-- LSTMnet.ipynb             # LSTM代码 
-        |--                           # LSTM代码 
+        |-- ensembl8086.ipynb         # 融合的LightGBM代码 
     |-- data # 由于主办方要求，无法提供数据文件
 ```
