@@ -5,7 +5,7 @@
 ```
 |--
     |-- code   # 复赛使用到的代码
-        |-- CNNtowernet.ipynb         # 双塔CNN代码
+        |-- CNNtower.ipynb         # 双塔CNN代码
         |-- cos_dense_attention.py    # 见说明1
         |-- lgb_final.ipynb           # LightGBM模型
         |-- LSTMnet.ipynb             # LSTM代码 
