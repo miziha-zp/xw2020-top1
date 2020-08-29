@@ -21,7 +21,7 @@ docker run --gpus '"device=0"' team_mtm_docker    # 启动gpu训练
 ``` 
 
 # 文件夹结构
-
+```
 |--
     |-- Dockerfile  # Docker文件，将会运行当前目录下两个py文件并生成两个sub文件
     |-- data   # data
@@ -33,7 +33,7 @@ docker run --gpus '"device=0"' team_mtm_docker    # 启动gpu训练
         |-- ensemble_1_to_allin088681.py      # 对应提交文件为 allin0.88681.csv	0.799
         |-- ensemble_2_to_0806allin088716.py  # 对应提交文件为 0806allin0.88716.csv 0.7979365079365079
     |-- lgb_online073.ipynb  使用Rolling的LightGBM实现，初赛线上0.73~，实际初赛融合未使用，仅供参考
-
+```
 注：
 1.由于最后两次不能确定哪个对应榜单最高成绩，故都进行了复现。
 2.**由于lgb多进程训练的原因，不能保证在不同配置的机器上的结果完全一致。** 
