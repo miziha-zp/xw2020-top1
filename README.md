@@ -55,6 +55,7 @@
 
 ```python
 def add_features(df):
+    # 参考自CSDN文章，公式略有问题，详情见章节“一些可以探索的点/我们还未尝试”
     print(df.columns)
     df['acc'] = (df.acc_x ** 2 + df.acc_y ** 2 + df.acc_z ** 2) ** .5
     df['accg'] = (df.acc_xg ** 2 + df.acc_yg ** 2 + df.acc_zg ** 2) ** .5
@@ -151,6 +152,20 @@ LSTM模型，采用与CNN2d相同的分组提取的思路，LSTM模块中添加L
 6. 据悉更多折的交叉验证可以提高分数(比如说二十折)
 7. LightGBM单纯增加特征，改训练参数初赛可以达到0.72~，使用rolling后在初赛可以达到0.73+。可以推测复赛如果使用rolling可以达到更高的分数，但是实现的时候记得别标签泄露了。
 8. LightGBM中使用的一些有用特征也可以加入到NN中，比如我们发现的"xy","xy_g","g"
+9. thetax, thetay, thetaz 的构建思路来源于[参考文章](https://blog.csdn.net/zhaoyuaiweide/article/details/70756387?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.nonecase)，此外感谢 @拾柒 的指正，实际比赛中我们使用的公式存在问题（计算手机倾角时应该去掉加速度的影响）,应该修正为
+```python
+df['g_x']=df['acc_xg']-df['acc_x']
+df['g_y']=df['acc_yg']-df['acc_y']
+df['g_z']=df['acc_zg']-df['acc_z']
+
+df['thetax']=np.arctan(df.g_x/
+                        np.sqrt(df.g_y*df.g_y+df.g_z*df.g_z))*180/np.pi
+df['thetay']=np.arctan(df.g_y/
+                        np.sqrt(df.g_x*df.g_x+df.g_z*df.g_z))*180/np.pi
+df['thetaz']=np.arctan(df.g_z/
+                        np.sqrt(df.g_x*df.g_x+df.g_y*df.g_y))*180/np.pi
+
+```
 
 ## 期待
 
